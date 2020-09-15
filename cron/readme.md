@@ -8,4 +8,4 @@ For a `TimerTrigger` to work, you provide a schedule in the form of a [cron expr
 
 ## Learn more
 
-<TODO> Documentation
+Solving the cron timezone problem: https://blog.maximerouiller.com/post/getting-rid-of-time-zone-issues-within-azure-functions/
