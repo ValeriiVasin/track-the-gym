@@ -1,12 +1,12 @@
-import { AzureFunction, Context, HttpRequest } from '@azure/functions';
-import { getOnline } from './get-online';
+import { AzureFunction, Context, HttpRequest } from "@azure/functions";
+import { getCheckins } from "../get-checkins";
 
 const httpTrigger: AzureFunction = async function (
   context: Context,
-  req: HttpRequest
+  _req: HttpRequest
 ): Promise<void> {
   context.res = {
-    body: await getOnline(),
+    body: await getCheckins(),
   };
 };
 

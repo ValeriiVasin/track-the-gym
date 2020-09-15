@@ -14,10 +14,20 @@
   "description": "Gym presence tracker",
   "devDependencies": {
     "@azure/functions": "^1.0.1-beta1",
+    "@types/node": "^12.12.59",
+    "husky": "^4.3.0",
     "npm-run-all": "^4.1.5",
-    "typescript": "^3.3.3"
+    "prettier": "^2.1.1",
+    "pretty-quick": "^3.0.2",
+    "typescript": "^4.0.0"
   },
   "dependencies": {
+    "@azure/cosmos": "^3.9.1",
     "axios": "^0.20.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
