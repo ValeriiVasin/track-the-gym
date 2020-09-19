@@ -1,6 +1,6 @@
-import { AzureFunction, Context } from "@azure/functions";
-import { trackCheckins } from "../db";
-import { getCheckins } from "../get-checkins";
+import { AzureFunction, Context } from '@azure/functions';
+import { trackCheckins } from '../db';
+import { getCheckins } from '../get-checkins';
 
 const timerTrigger: AzureFunction = async function (
   context: Context,
