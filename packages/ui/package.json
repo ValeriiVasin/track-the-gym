@@ -7,7 +7,7 @@
     "dev": "rollup -c -w",
     "start": "sirv public",
     "validate": "svelte-check",
-    "test": "jest"
+    "test": "TZ=UTC jest"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
