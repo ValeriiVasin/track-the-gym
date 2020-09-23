@@ -1,47 +1,57 @@
 <script lang="ts">
+  import Days from './components/days.svelte';
+  import Spinner from './components/spinner.svelte';
   import { fetchItems } from './helpers/fetch-items';
+  import { day } from './store';
+  import type { Day } from './types';
 
   function format(timestamp: string) {
     return new Date(timestamp).toString().replace(/\sGMT.*$/, '');
   }
+
+  function handleDayChange(event: CustomEvent<Day>) {
+    day.set(event.detail);
+  }
 </script>
 
-<style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
+<style lang="scss">
+  .container {
+    width: 1000px;
     margin: 0 auto;
   }
 
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
+  .days-wrapper {
+    display: flex;
+    justify-content: center;
   }
 </style>
 
 <main>
   {#await fetchItems()}
-    <h1>Loading...</h1>
+    <Spinner />
   {:then items}
-    <table>
-      <thead>
-        <tr>
-          <td>timestamp</td>
-          <td>checkins</td>
-        </tr>
-      </thead>
-      <tbody>
-        {#each items as item}
+    <div class="container">
+      <div class="days-wrapper">
+        <Days day={$day} on:change={handleDayChange} />
+      </div>
+      <table>
+        <thead>
           <tr>
-            <td>{format(item.timestamp)}</td>
-            <td>{item.checkins}</td>
+            <td>timestamp</td>
+            <td>checkins</td>
           </tr>
-        {/each}
-        <tr />
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {#each items as item}
+            <tr>
+              <td>{format(item.timestamp)}</td>
+              <td>{item.checkins}</td>
+            </tr>
+          {/each}
+          <tr />
+        </tbody>
+      </table>
+    </div>
   {:catch error}
     <h1>Error!</h1>
     <pre>{error}</pre>
