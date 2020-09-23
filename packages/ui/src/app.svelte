@@ -30,7 +30,9 @@
   });
 
   function format(timestamp: Date) {
-    return String(timestamp).replace(/\sGMT.*$/, '');
+    return String(timestamp)
+      .replace(/\sGMT.*$/, '')
+      .slice(-8);
   }
 
   function handleDayChange(event: CustomEvent<Day>) {
@@ -51,6 +53,10 @@
     display: flex;
     justify-content: center;
   }
+
+  .flex {
+    display: flex;
+  }
 </style>
 
 <main>
@@ -64,23 +70,27 @@
       <div class="days-wrapper">
         <Days day={$day} on:change={handleDayChange} />
       </div>
-      <table>
+      <div class="flex">
         {#each labels as label}
-          <thead>
-            <tr>
-              <th colspan="2">{label}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {#each groups.get(label) as { timestamp, checkins }}
+          <table>
+            <caption>{label}</caption>
+            <thead>
               <tr>
-                <td>{format(timestamp)}</td>
-                <td>{checkins}</td>
+                <th>time</th>
+                <th>visits</th>
               </tr>
-            {/each}
-          </tbody>
+            </thead>
+            <tbody>
+              {#each groups.get(label) as { timestamp, checkins }}
+                <tr>
+                  <td>{format(timestamp)}</td>
+                  <td>{checkins}</td>
+                </tr>
+              {/each}
+            </tbody>
+          </table>
         {/each}
-      </table>
+      </div>
     </div>
   {/if}
 </main>
