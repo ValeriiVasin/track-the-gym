@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
-import { Day } from './types';
+import { getDay } from './helpers/get-day';
+import type { Day } from './types';
 
-export const day = writable<Day>(Day.Friday);
+export const day = writable<Day>(getDay(new Date()));
