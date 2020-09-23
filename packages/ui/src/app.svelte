@@ -10,7 +10,7 @@
   }
 
   function handleDayChange(event: CustomEvent<Day>) {
-    day.set(event.detail);
+    $day = event.detail;
   }
 </script>
 
