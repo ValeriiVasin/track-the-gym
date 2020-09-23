@@ -12,3 +12,25 @@ export const enum Day {
   Saturday = 'Saturday',
   Sunday = 'Sunday',
 }
+
+export const enum Month {
+  January = 'Jan',
+  February = 'Feb',
+  March = 'Mar',
+  April = 'Apr',
+  May = 'May',
+  June = 'Jun',
+  July = 'Jul',
+  August = 'Aug',
+  September = 'Sep',
+  October = 'Oct',
+  November = 'Nov',
+  December = 'Dec',
+}
+
+interface CheckinGroup {
+  label: string;
+  checkins: Item[];
+}
+
+export type GroupedCheckins = Record<Day, CheckinGroup>;
