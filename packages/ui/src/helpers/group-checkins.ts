@@ -10,10 +10,11 @@ export function groupCheckins(checkins: ParsedItem[]): GroupedCheckins {
     const label = getDateLabel(checkin.timestamp);
 
     if (!result.has(day)) {
-      result.set(
-        day,
-        new Map<string, ParsedItem[]>([[label, []]])
-      );
+      result.set(day, new Map<string, ParsedItem[]>());
+    }
+
+    if (!result.get(day).get(label)) {
+      result.get(day).set(label, []);
     }
 
     result.get(day).get(label).push(checkin);

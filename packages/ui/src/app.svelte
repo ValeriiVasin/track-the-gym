@@ -1,17 +1,44 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import Days from './components/days.svelte';
   import Spinner from './components/spinner.svelte';
   import { fetchItems } from './helpers/fetch-items';
+  import { groupCheckins } from './helpers/group-checkins';
+  import { parseDate } from './helpers/parse-date';
   import { day } from './store';
-  import type { Day } from './types';
+  import type { Day, GroupedCheckins, Item, ParsedItem } from './types';
 
-  function format(timestamp: string) {
-    return new Date(timestamp).toString().replace(/\sGMT.*$/, '');
+  let loading = true;
+  let groupedCheckins: GroupedCheckins = new Map();
+  let error: unknown;
+
+  function parseCheckins(items: Item[]): ParsedItem[] {
+    return items.map(({ timestamp, checkins }) => ({
+      checkins,
+      timestamp: parseDate(timestamp),
+    }));
+  }
+
+  onMount(async () => {
+    try {
+      groupedCheckins = groupCheckins(parseCheckins(await fetchItems()));
+    } catch (err) {
+      error = err;
+    } finally {
+      loading = false;
+    }
+  });
+
+  function format(timestamp: Date) {
+    return String(timestamp).replace(/\sGMT.*$/, '');
   }
 
   function handleDayChange(event: CustomEvent<Day>) {
     $day = event.detail;
   }
+
+  $: groups = groupedCheckins.get($day) ?? new Map<string, ParsedItem[]>();
+  $: labels = [...groups.keys()];
 </script>
 
 <style lang="scss">
@@ -27,33 +54,33 @@
 </style>
 
 <main>
-  {#await fetchItems()}
+  {#if loading}
     <Spinner />
-  {:then items}
+  {:else if error}
+    <h1>Error!</h1>
+    <pre>{error}</pre>
+  {:else}
     <div class="container">
       <div class="days-wrapper">
         <Days day={$day} on:change={handleDayChange} />
       </div>
       <table>
-        <thead>
-          <tr>
-            <td>timestamp</td>
-            <td>checkins</td>
-          </tr>
-        </thead>
-        <tbody>
-          {#each items as item}
+        {#each labels as label}
+          <thead>
             <tr>
-              <td>{format(item.timestamp)}</td>
-              <td>{item.checkins}</td>
+              <th colspan="2">{label}</th>
             </tr>
-          {/each}
-          <tr />
-        </tbody>
+          </thead>
+          <tbody>
+            {#each groups.get(label) as { timestamp, checkins }}
+              <tr>
+                <td>{format(timestamp)}</td>
+                <td>{checkins}</td>
+              </tr>
+            {/each}
+          </tbody>
+        {/each}
       </table>
     </div>
-  {:catch error}
-    <h1>Error!</h1>
-    <pre>{error}</pre>
-  {/await}
+  {/if}
 </main>
