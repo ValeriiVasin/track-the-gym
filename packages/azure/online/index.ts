@@ -7,6 +7,9 @@ const httpTrigger: AzureFunction = async function (
 ): Promise<void> {
   const timestamp = _req.query.since;
   context.res = {
+    headers: {
+      'Cache-Control': 'max-age=900',
+    },
     body: JSON.stringify({ items: await getOnline(timestamp) }),
   };
 };
