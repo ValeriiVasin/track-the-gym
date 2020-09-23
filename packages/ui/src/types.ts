@@ -3,6 +3,11 @@ export interface Item {
   checkins: number;
 }
 
+export interface ParsedItem {
+  timestamp: Date;
+  checkins: number;
+}
+
 export const enum Day {
   Monday = 'Monday',
   Tuesday = 'Tuesday',
@@ -30,7 +35,7 @@ export const enum Month {
 
 interface CheckinGroup {
   label: string;
-  checkins: Item[];
+  checkins: ParsedItem[];
 }
 
-export type GroupedCheckins = Record<Day, CheckinGroup>;
+export type GroupedCheckins = Map<Day, CheckinGroup>;
