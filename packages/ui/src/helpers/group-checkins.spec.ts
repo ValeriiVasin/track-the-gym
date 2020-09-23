@@ -22,13 +22,13 @@ describe('group checkins', () => {
   it('group is having proper label', () => {
     const result = groupCheckins(checkins);
 
-    expect(result.get(Day.Wednesday).label).toBe('23 Sep');
+    expect(result.get(Day.Wednesday).has('23 Sep')).toBe(true);
   });
 
   it('group is ordered by date ASC', () => {
     const result = groupCheckins(checkins);
 
-    expect(result.get(Day.Wednesday).checkins).toEqual([
+    expect(result.get(Day.Wednesday).get('23 Sep')).toEqual([
       { timestamp: new Date('2020-09-23 21:45:00'), checkins: 20 },
       { timestamp: new Date('2020-09-23 22:00:00'), checkins: 18 },
       { timestamp: new Date('2020-09-23 22:15:00'), checkins: 15 },

@@ -33,9 +33,4 @@ export enum Month {
   December = 'Dec',
 }
 
-interface CheckinGroup {
-  label: string;
-  checkins: ParsedItem[];
-}
-
-export type GroupedCheckins = Map<Day, CheckinGroup>;
+export type GroupedCheckins = Map<Day, Map<string, ParsedItem[]>>;
