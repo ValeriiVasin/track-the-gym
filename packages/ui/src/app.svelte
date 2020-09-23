@@ -29,10 +29,8 @@
     }
   });
 
-  function format(timestamp: Date) {
-    return String(timestamp)
-      .replace(/\sGMT.*$/, '')
-      .slice(-8);
+  function pad(num) {
+    return String(num).padStart(2, '0');
   }
 
   function handleDayChange(event: CustomEvent<Day>) {
@@ -83,7 +81,9 @@
             <tbody>
               {#each groups.get(label) as { timestamp, checkins }}
                 <tr>
-                  <td>{format(timestamp)}</td>
+                  <td>
+                    {pad(timestamp.getHours())}<sup>{pad(timestamp.getMinutes())}</sup>
+                  </td>
                   <td>{checkins}</td>
                 </tr>
               {/each}
