@@ -8,7 +8,7 @@ export interface ParsedItem {
   checkins: number;
 }
 
-export const enum Day {
+export enum Day {
   Monday = 'Monday',
   Tuesday = 'Tuesday',
   Wednesday = 'Wednesday',
@@ -18,7 +18,7 @@ export const enum Day {
   Sunday = 'Sunday',
 }
 
-export const enum Month {
+export enum Month {
   January = 'Jan',
   February = 'Feb',
   March = 'Mar',
