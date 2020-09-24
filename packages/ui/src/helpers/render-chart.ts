@@ -7,20 +7,20 @@
 import type { DataSet } from '../types';
 
 export async function renderChart(element: HTMLDivElement, dataTable: DataSet) {
-  google.charts.load('current', { packages: ['corechart'] });
-  google.charts.setOnLoadCallback(() => {
-    var data = google.visualization.arrayToDataTable(dataTable);
+  await google.charts.load('current', { packages: ['corechart'] });
 
-    const options: google.visualization.LineChartOptions = {
-      title: 'Checkins',
-      curveType: 'function',
-      legend: { position: 'bottom' },
-      vAxis: {
-        maxValue: 200,
-        ticks: [25, 50, 75, 100, 125, 150, 175, 200],
-      },
-    };
+  const options: google.visualization.LineChartOptions = {
+    title: 'Checkins',
+    curveType: 'function',
+    legend: { position: 'bottom' },
+    vAxis: {
+      maxValue: 200,
+      ticks: [25, 50, 75, 100, 125, 150, 175, 200],
+    },
+  };
 
-    new google.visualization.LineChart(element).draw(data, options);
-  });
+  new google.visualization.LineChart(element).draw(
+    google.visualization.arrayToDataTable(dataTable),
+    options
+  );
 }
