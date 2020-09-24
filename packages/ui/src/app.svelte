@@ -41,7 +41,6 @@
 
 <style lang="scss">
   .container {
-    padding: 0 100px;
     margin: 0 auto;
   }
 

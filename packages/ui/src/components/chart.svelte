@@ -7,9 +7,9 @@
 
   let chart: HTMLDivElement;
 
-  afterUpdate(() => {
-    renderChart(chart, dataset);
-  });
+  const render = () => renderChart(chart, dataset);
+
+  afterUpdate(render);
 </script>
 
 <style>
@@ -20,3 +20,4 @@
 </style>
 
 <div bind:this={chart} class="chart" />
+<svelte:window on:resize={render} />
