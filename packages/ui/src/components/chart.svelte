@@ -14,8 +14,11 @@
 
 <style>
   .chart {
-    width: 100%;
-    height: 600px;
+    width: 100vw;
+    height: 80vh;
+    max-height: 600px;
+    /* ios bottom menu */
+    margin-bottom: 32px;
   }
 </style>
 

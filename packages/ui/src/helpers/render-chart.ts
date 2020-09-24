@@ -18,8 +18,8 @@ export async function renderChart(element: HTMLDivElement, dataTable: DataSet) {
       ticks: [25, 50, 75, 100, 125, 150, 175, 200],
     },
     chartArea: {
-      height: '100%',
       width: '100%',
+      height: '66%',
       top: 48,
       left: 48,
       right: 16,
