@@ -34,3 +34,9 @@ export enum Month {
 }
 
 export type GroupedCheckins = Map<Day, Map<string, ParsedItem[]>>;
+
+export type ChartData = Array<{ label: string; checkins: ParsedItem[] }>;
+
+type DataSetTitles = string[];
+type DataSetRow = [string, ...number[]];
+export type DataSet = [DataSetTitles, ...DataSetRow[]];
