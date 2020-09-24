@@ -4,19 +4,15 @@
  * to get google.visualization types
  */
 
-export async function renderChart(element: HTMLDivElement) {
+import type { DataSet } from '../types';
+
+export async function renderChart(element: HTMLDivElement, dataTable: DataSet) {
   google.charts.load('current', { packages: ['corechart'] });
   google.charts.setOnLoadCallback(() => {
-    var data = google.visualization.arrayToDataTable([
-      ['Year', 'Sales', 'Expenses'],
-      ['2004', 1000, 400],
-      ['2005', 1170, 460],
-      ['2006', 660, 1120],
-      ['2007', 1030, 540],
-    ]);
+    var data = google.visualization.arrayToDataTable(dataTable);
 
     const options: google.visualization.LineChartOptions = {
-      title: 'Company Performance',
+      title: 'Gym Checkins',
       curveType: 'function',
       legend: { position: 'bottom' },
     };

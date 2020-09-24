@@ -1,19 +1,20 @@
 <script type="ts">
-  import { onMount } from 'svelte';
+  import { afterUpdate } from 'svelte';
   import { renderChart } from '../helpers/render-chart';
 
-  // export let label: string;
+  // https://developers.google.com/chart/interactive/docs/gallery/linechart
+  export let dataset;
 
   let chart: HTMLDivElement;
 
-  onMount(() => {
-    renderChart(chart);
+  afterUpdate(() => {
+    renderChart(chart, dataset);
   });
 </script>
 
 <style>
   .chart {
-    width: 800px;
+    width: 100%;
     height: 600px;
   }
 </style>
