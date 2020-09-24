@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import Chart from './components/chart.svelte';
   import Days from './components/days.svelte';
   import Spinner from './components/spinner.svelte';
   import { fetchItems } from './helpers/fetch-items';
@@ -55,6 +56,11 @@
   .flex {
     display: flex;
   }
+
+  .chart {
+    display: flex;
+    justify-content: center;
+  }
 </style>
 
 <main>
@@ -68,6 +74,11 @@
       <div class="days-wrapper">
         <Days day={$day} on:change={handleDayChange} />
       </div>
+
+      <div class="chart">
+        <Chart />
+      </div>
+
       <div class="flex">
         {#each labels as label}
           <table>
