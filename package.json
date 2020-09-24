@@ -11,7 +11,10 @@
     "typescript": "^4.0.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "lerna bootstrap",
+    "prettify": "lerna run prettify",
+    "build:ui": "lerna bootstrap --scope ui && lerna run build --scope ui",
+    "test": "lerna run test"
   },
   "repository": {
     "type": "git",
@@ -28,5 +31,12 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "dependencies": {
+    "prettier-plugin-svelte": "^1.2.1",
+    "svelte": "^3.25.1"
   }
 }
