@@ -12,9 +12,13 @@ export async function renderChart(element: HTMLDivElement, dataTable: DataSet) {
     var data = google.visualization.arrayToDataTable(dataTable);
 
     const options: google.visualization.LineChartOptions = {
-      title: 'Gym Checkins',
+      title: 'Checkins',
       curveType: 'function',
       legend: { position: 'bottom' },
+      vAxis: {
+        maxValue: 200,
+        ticks: [25, 50, 75, 100, 125, 150, 175, 200],
+      },
     };
 
     new google.visualization.LineChart(element).draw(data, options);
