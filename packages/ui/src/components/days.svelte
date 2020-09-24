@@ -15,11 +15,17 @@
     Day.Saturday,
     Day.Sunday,
   ];
+
+  const handleSelectChange: svelte.JSX.ChangeEventHandler<HTMLSelectElement> = (
+    event
+  ) => {
+    dispatch('change', event.target.value);
+  };
 </script>
 
 <style lang="scss">
   .days {
-    display: flex;
+    display: none;
   }
 
   .day {
@@ -36,6 +42,15 @@
       pointer-events: none;
     }
   }
+
+  @media only screen and (min-width: 768px) {
+    .days {
+      display: flex;
+    }
+    .selector {
+      display: none;
+    }
+  }
 </style>
 
 <ul class="days">
@@ -48,3 +63,10 @@
     </li>
   {/each}
 </ul>
+
+<!-- svelte-ignore a11y-no-onchange -->
+<select class="selector" value={day} on:change={handleSelectChange}>
+  {#each days as weekDay}
+    <option value={weekDay}>{weekDay}</option>
+  {/each}
+</select>
