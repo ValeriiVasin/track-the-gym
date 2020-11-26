@@ -14,7 +14,7 @@
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
     "@tsconfig/svelte": "^1.0.0",
-    "@types/google.visualization": "0.0.54",
+    "@types/google.visualization": "0.0.57",
     "@types/jest": "^26.0.14",
     "jest": "^26.4.2",
     "rollup": "^2.3.4",
