@@ -1,0 +1,119 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 14.14.22
+    - 14.14.24
+    - 14.14.25
+    - 14.14.26
+    - 14.14.28
+    - 14.14.30
+    - 14.14.31
+    - 14.14.32
+    - 14.14.33
+    - 14.14.34
+    - 14.14.35
+    - 14.14.37
+    - 14.14.39
+    - 14.14.41
+    - 15.0.0
+  - dependency-name: svelte-check
+    versions:
+    - 1.1.30
+    - 1.1.31
+    - 1.1.32
+    - 1.1.33
+    - 1.1.34
+    - 1.1.35
+    - 1.1.36
+    - 1.2.0
+    - 1.2.1
+    - 1.2.3
+    - 1.2.4
+    - 1.2.5
+    - 1.2.6
+    - 1.3.0
+    - 1.4.0
+    - 1.5.1
+  - dependency-name: sass
+    versions:
+    - 1.32.11
+    - 1.32.5
+    - 1.32.6
+    - 1.32.7
+    - 1.32.8
+  - dependency-name: rollup
+    versions:
+    - 2.38.1
+    - 2.38.2
+    - 2.38.3
+    - 2.38.4
+    - 2.38.5
+    - 2.39.0
+    - 2.39.1
+    - 2.40.0
+    - 2.41.0
+    - 2.41.1
+    - 2.41.2
+    - 2.41.4
+    - 2.41.5
+    - 2.42.1
+    - 2.42.3
+    - 2.42.4
+    - 2.43.1
+    - 2.44.0
+    - 2.45.0
+    - 2.45.1
+    - 2.45.2
+  - dependency-name: "@types/google.visualization"
+    versions:
+    - 0.0.59
+    - 0.0.60
+    - 0.0.61
+    - 0.0.62
+    - 0.0.63
+    - 0.0.64
+    - 0.0.65
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: ts-jest
+    versions:
+    - 26.4.4
+    - 26.5.0
+    - 26.5.1
+    - 26.5.2
+    - 26.5.3
+    - 26.5.4
+  - dependency-name: typescript
+    versions:
+    - 4.1.3
+    - 4.1.4
+    - 4.1.5
+    - 4.2.2
+    - 4.2.3
+  - dependency-name: "@rollup/plugin-typescript"
+    versions:
+    - 8.1.0
+    - 8.1.1
+    - 8.2.0
+  - dependency-name: "@rollup/plugin-node-resolve"
+    versions:
+    - 11.1.0
+    - 11.1.1
+    - 11.2.0
+  - dependency-name: "@rollup/plugin-commonjs"
+    versions:
+    - 17.0.0
+    - 17.1.0
+  - dependency-name: node-notifier
+    versions:
+    - 8.0.1
