@@ -24,7 +24,7 @@
     "sass": "^1.26.11",
     "sirv-cli": "^1.0.0",
     "svelte": "^3.0.0",
-    "svelte-check": "^1.0.0",
+    "svelte-check": "^2.2.1",
     "svelte-preprocess": "^4.0.0",
     "ts-jest": "^26.4.0",
     "tslib": "^2.0.0",
